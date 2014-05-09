@@ -6917,8 +6917,8 @@
   {:added "1.5"}
   [expr name & forms]
   `(let [~name ~expr
-         ~@(interleave (repeat name) forms)]
-     ~name))
+         ~@(interleave (repeat name) (butlast forms))]
+     ~(last forms)))
 
 (defmacro some->
   "When expr is not nil, threads it into the first form (via ->),
